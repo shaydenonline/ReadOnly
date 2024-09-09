@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}Read Only Mode{% endblock %}
+{% block content %}
+
+<div id="hiddenWordButtons">
+<button id="translateButton">Translate Word</button>
+<button id="romanizeButton">Romanize Word</button>
+<button id="saveWordButton">Add Word to Spread Sheet</button>
+</div>
+
+<div id="hiddenPhraseButtons">
+<button id="translatePhraseButton">Attempt to Translate Text</button>
+</div>
+<p id="hindiText" href="{{user_url}}">
+    {{renderedText}}
+</p>
+
+<div id="popUpContainer" class="popUpContainer">
+    <div class="superContainer" id="translatedWordPopUp">
+    </div>
+    <div id="popUpContainerButtonGroup" class="popUpContainerButtonGroup">
+        <button id="saveAllTranslations" class="innerBoxButtons">Save All Translations</button>
+        <button class="innerBoxButtons">Select Translations To Save</button>
+    </div>
+
+</div>
+
+
+{% endblock %}
+
+
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='highlight_functionality.css') }}">
+<style>
+    .popUpContainer{
+        position: absolute;
+        background-color: aliceblue;
+        width:auto;
+        height:auto;
+        display:none;
+        right:50%;
+        top:50%;
+        border: 10px solid red;
+        overflow:hidden;
+    }
+    .superContainer{
+        display:grid;
+        justify-content: left;
+        margin: 20px;
+    }
+    .subContainer{
+        display:grid;
+        position:relative;
+        grid-template-columns: 50px;
+    }
+    .gridItem{
+        border: 2px solid blueviolet;
+        border-radius: 5px;
+    }
+    .popUpContainerButtonGroup{
+        position:relative;
+        bottom: 0px;
+        display:inherit;
+        left:0px;
+        border: 2px solid purple;
+        justify-content: left;
+    }
+    .innerBoxButtons{
+        display:inherit;
+        font-size:10px;
+        justify-content: left;
+        padding:1px;
+    }
+</style>
+{% endblock %}
+
+
+{% block scripts %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename='highlight_functionality.js')}}?v=1.0"></script>
+{% endblock %}

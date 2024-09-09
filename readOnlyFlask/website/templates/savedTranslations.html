@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Saved Translations{% endblock %}
+{% block content %}
+<ul>
+    {%for savedTranslation in savedTranslations%}
+    <li>
+        <div class="pastEntries">Rendering a savedTranslation {{savedTranslation.hindiWord}} {{ savedTranslation.englishTranslations  }}</div>
+    </li>
+    {%endfor%}
+    </ul>
+{% endblock %}
